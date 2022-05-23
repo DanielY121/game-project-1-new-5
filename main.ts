@@ -9,6 +9,10 @@ input.onGesture(Gesture.TiltLeft, function () {
     Player.change(LedSpriteProperty.X, -1)
     music.playMelody("C5 - - - - - - - ", 500)
 })
+input.onButtonPressed(Button.A, function () {
+    radio.sendString("Game over Score:")
+    radio.sendNumber(game.score())
+})
 input.onButtonPressed(Button.AB, function () {
     Bullet = game.createSprite(Player.get(LedSpriteProperty.X), 3)
     basic.pause(250)
@@ -34,7 +38,8 @@ input.onButtonPressed(Button.AB, function () {
 })
 radio.onReceivedString(function (receivedString) {
     game.pause()
-    music.playMelody("A B C5 A B C5 A B ", 500)
+    music.playMelody("F E D F E D F E ", 500)
+    music.playMelody("D - E F - - - - ", 500)
     basic.showString(receivedString)
     basic.pause(5000)
     game.resume()
@@ -140,14 +145,6 @@ basic.forever(function () {
                     basic.showIcon(IconNames.SmallHeart)
                     basic.showIcon(IconNames.Heart)
                     basic.showIcon(IconNames.SmallHeart)
-                    basic.showString("Thank you for supporting this game.")
-                    basic.showString("Made by DanielY121")
-                    basic.pause(2500)
-                    if (input.buttonIsPressed(Button.A)) {
-                        radio.sendString("Game over Score:")
-                        radio.sendNumber(game.score())
-                    }
-                    basic.pause(2500)
                     game.gameOver()
                 }
             }
@@ -187,14 +184,6 @@ basic.forever(function () {
                     basic.showIcon(IconNames.SmallHeart)
                     basic.showIcon(IconNames.Heart)
                     basic.showIcon(IconNames.SmallHeart)
-                    basic.showString("Thank you for supporting this game.")
-                    basic.showString("Made by DanielY121")
-                    basic.pause(2500)
-                    if (input.buttonIsPressed(Button.A)) {
-                        radio.sendString("Game over Score:")
-                        radio.sendNumber(game.score())
-                    }
-                    basic.pause(2500)
                     game.gameOver()
                 }
             }
