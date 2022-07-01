@@ -31,8 +31,6 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 let Enemy_speed = 0
 let sprite = 0
-let EF1 = 0
-let Enemy_fever_1: game.LedSprite = null
 let Bullet_from_enemy: game.LedSprite = null
 let Bullet: game.LedSprite = null
 let Enemy: game.LedSprite = null
@@ -44,54 +42,6 @@ loops.everyInterval(60000, function () {
     game.addScore(1)
 })
 basic.forever(function () {
-    if (game.score() == 10) {
-        for (let index = 0; index < 5; index++) {
-            Enemy_fever_1 = game.createSprite(4, 0)
-            basic.pause(250)
-            EF1 = randint(0, 4)
-            if (EF1 == 0) {
-                Enemy_fever_1.delete()
-                Enemy_fever_1 = game.createSprite(0, 0)
-                basic.pause(250)
-                if (Bullet.isTouching(Enemy_fever_1)) {
-                    Enemy_fever_1.delete()
-                    game.addScore(1)
-                }
-            } else if (EF1 == 1) {
-                Enemy_fever_1.delete()
-                Enemy_fever_1 = game.createSprite(1, 0)
-                basic.pause(250)
-                if (Bullet.isTouching(Enemy_fever_1)) {
-                    Enemy_fever_1.delete()
-                    game.addScore(1)
-                }
-            } else if (EF1 == 2) {
-                Enemy_fever_1.delete()
-                Enemy_fever_1 = game.createSprite(2, 0)
-                basic.pause(250)
-                if (Bullet.isTouching(Enemy_fever_1)) {
-                    Enemy_fever_1.delete()
-                    game.addScore(1)
-                }
-            } else if (EF1 == 3) {
-                Enemy_fever_1.delete()
-                Enemy_fever_1 = game.createSprite(3, 0)
-                basic.pause(250)
-                if (Bullet.isTouching(Enemy_fever_1)) {
-                    Enemy_fever_1.delete()
-                    game.addScore(1)
-                }
-            } else {
-                Enemy_fever_1.delete()
-                Enemy_fever_1 = game.createSprite(4, 0)
-                basic.pause(250)
-                if (Bullet.isTouching(Enemy_fever_1)) {
-                    Enemy_fever_1.delete()
-                    game.addScore(1)
-                }
-            }
-        }
-    }
     for (let index = 0; index < 4; index++) {
         sprite = randint(0, 1)
         if (sprite == 0) {
@@ -161,7 +111,6 @@ basic.forever(function () {
                     Enemy.delete()
                     music.playMelody("E B C5 A B G A F ", 300)
                     music.playMelody("E - - - - - - - ", 103)
-                    basic.showIcon(IconNames.SmallHeart)
                     basic.showIcon(IconNames.Heart)
                     basic.showIcon(IconNames.SmallHeart)
                     game.gameOver()
