@@ -66,7 +66,6 @@ basic.forever(function () {
                 basic.pause(250)
                 if (Bullet_from_enemy.isTouching(Player)) {
                     Player.delete()
-                    Enemy.delete()
                     music.playMelody("E B C5 A B G A F ", 300)
                     music.playMelody("E - - - - - - - ", 103)
                     basic.showIcon(IconNames.Heart)
@@ -102,13 +101,12 @@ basic.forever(function () {
             basic.pause(250)
             if (Bullet_from_enemy.isTouching(Player)) {
                 Player.delete()
-                Enemy.delete()
-                music.playMelody("E B C5 A B G A F ", 300)
-                music.playMelody("E - - - - - - - ", 103)
-                basic.showIcon(IconNames.Heart)
-                basic.showIcon(IconNames.SmallHeart)
-                game.gameOver()
             }
+            music.playMelody("E B C5 A B G A F ", 300)
+            music.playMelody("E - - - - - - - ", 103)
+            basic.showIcon(IconNames.Heart)
+            basic.showIcon(IconNames.SmallHeart)
+            game.gameOver()
         }
         Bullet_from_enemy.delete()
     }
