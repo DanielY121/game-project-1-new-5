@@ -72,7 +72,6 @@ basic.forever(function () {
                     Enemy.delete()
                     music.playMelody("E B C5 A B G A F ", 300)
                     music.playMelody("E - - - - - - - ", 103)
-                    basic.showIcon(IconNames.SmallHeart)
                     basic.showIcon(IconNames.Heart)
                     basic.showIcon(IconNames.SmallHeart)
                     game.gameOver()
