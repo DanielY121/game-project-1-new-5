@@ -58,9 +58,6 @@ basic.forever(function () {
             Bullet_from_enemy = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, 1)
-            if (Enemy.isDeleted()) {
-                Bullet_from_enemy.delete()
-            }
             for (let index = 0; index < 4; index++) {
                 if (Enemy.isDeleted()) {
                     Bullet_from_enemy.delete()
@@ -96,26 +93,23 @@ basic.forever(function () {
             Bullet_from_enemy = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, -1)
+        }
+        for (let index = 0; index < 4; index++) {
             if (Enemy.isDeleted()) {
                 Bullet_from_enemy.delete()
             }
-            for (let index = 0; index < 4; index++) {
-                if (Enemy.isDeleted()) {
-                    Bullet_from_enemy.delete()
-                }
-                Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
-                basic.pause(250)
-                if (Bullet_from_enemy.isTouching(Player)) {
-                    Player.delete()
-                    Enemy.delete()
-                    music.playMelody("E B C5 A B G A F ", 300)
-                    music.playMelody("E - - - - - - - ", 103)
-                    basic.showIcon(IconNames.Heart)
-                    basic.showIcon(IconNames.SmallHeart)
-                    game.gameOver()
-                }
+            Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
+            basic.pause(250)
+            if (Bullet_from_enemy.isTouching(Player)) {
+                Player.delete()
+                Enemy.delete()
+                music.playMelody("E B C5 A B G A F ", 300)
+                music.playMelody("E - - - - - - - ", 103)
+                basic.showIcon(IconNames.Heart)
+                basic.showIcon(IconNames.SmallHeart)
+                game.gameOver()
             }
-            Bullet_from_enemy.delete()
         }
+        Bullet_from_enemy.delete()
     }
 })
