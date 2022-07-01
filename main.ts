@@ -9,14 +9,13 @@ input.onButtonPressed(Button.AB, function () {
         if (Bullet.isTouching(Enemy)) {
             Player.delete()
             Enemy.delete()
-            Bullet_from_enemy.delete()
             music.playMelody("E G F G A F A G ", 303)
             game.addScore(1)
             Bullet.delete()
             Player = game.createSprite(2, 4)
             Enemy = game.createSprite(0, 0)
-        } else if (Bullet.isTouching(Bullet_from_enemy)) {
-            Bullet_from_enemy.delete()
+        } else if (Bullet.isTouching(enemys_bullet)) {
+            enemys_bullet.delete()
             Bullet.delete()
         } else {
             Bullet.change(LedSpriteProperty.Y, -1)
@@ -31,7 +30,7 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 let Enemy_speed = 0
 let sprite = 0
-let Bullet_from_enemy: game.LedSprite = null
+let enemys_bullet: game.LedSprite = null
 let Bullet: game.LedSprite = null
 let Enemy: game.LedSprite = null
 let Player: game.LedSprite = null
@@ -55,16 +54,16 @@ basic.forever(function () {
                 basic.pause(500)
             }
         } else {
-            Bullet_from_enemy = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
+            enemys_bullet = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, 1)
             for (let index = 0; index < 4; index++) {
-                if (Enemy.isDeleted()) {
-                    Bullet_from_enemy.delete()
+                if (Player.isDeleted()) {
+                    enemys_bullet.delete()
                 }
-                Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
+                enemys_bullet.change(LedSpriteProperty.Y, 1)
                 basic.pause(250)
-                if (Bullet_from_enemy.isTouching(Player)) {
+                if (enemys_bullet.isTouching(Player)) {
                     Player.delete()
                     music.playMelody("E B C5 A B G A F ", 300)
                     music.playMelody("E - - - - - - - ", 103)
@@ -73,7 +72,7 @@ basic.forever(function () {
                     game.gameOver()
                 }
             }
-            Bullet_from_enemy.delete()
+            enemys_bullet.delete()
         }
     }
     for (let index = 0; index < 4; index++) {
@@ -89,17 +88,17 @@ basic.forever(function () {
                 basic.pause(500)
             }
         } else {
-            Bullet_from_enemy = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
+            enemys_bullet = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, -1)
         }
         for (let index = 0; index < 4; index++) {
-            if (Enemy.isDeleted()) {
-                Bullet_from_enemy.delete()
+            if (Player.isDeleted()) {
+                enemys_bullet.delete()
             }
-            Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
+            enemys_bullet.change(LedSpriteProperty.Y, 1)
             basic.pause(250)
-            if (Bullet_from_enemy.isTouching(Player)) {
+            if (enemys_bullet.isTouching(Player)) {
                 Player.delete()
             }
             music.playMelody("E B C5 A B G A F ", 300)
@@ -108,6 +107,6 @@ basic.forever(function () {
             basic.showIcon(IconNames.SmallHeart)
             game.gameOver()
         }
-        Bullet_from_enemy.delete()
+        enemys_bullet.delete()
     }
 })
